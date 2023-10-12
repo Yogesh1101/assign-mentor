@@ -3,7 +3,7 @@ const router = express.Router();
 import Mentor from "../models/mentor.js";
 import Student from "../models/student.js";
 
-// Creating a Mentor
+// 1. Creating a Mentor
 router.post("/mentors", async (req, res) => {
   try {
     const mentor = new Mentor(req.body);
@@ -14,7 +14,7 @@ router.post("/mentors", async (req, res) => {
   }
 });
 
-// Creating a Student
+// 2. Creating a Student
 router.post("/students", async (req, res) => {
   try {
     const student = new Student(req.body);
@@ -25,7 +25,7 @@ router.post("/students", async (req, res) => {
   }
 });
 
-// Assign a Student to a Mentor
+// 3. Assign a Student to a Mentor
 router.post("/assign-student/:mentorId", async (req, res) => {
   try {
     const { mentorId } = req.params;
@@ -46,7 +46,7 @@ router.post("/assign-student/:mentorId", async (req, res) => {
   }
 });
 
-// Creating a route to assign one or more students to a mentor
+// 3. Creating a route to assign one or more students to a mentor
 router.post("/assign-students-to-mentor/:mentorId", async (req, res) => {
   const { mentorId } = req.params;
   const { studentIds } = req.body;
@@ -77,7 +77,7 @@ router.post("/assign-students-to-mentor/:mentorId", async (req, res) => {
   }
 });
 
-// Creating a route to assign or change a mentor for a student
+// 4. Creating a route to assign or change a mentor for a student
 router.put("/assign-mentor-to-student/:studentId", async (req, res) => {
   const { studentId } = req.params;
   const { mentorId } = req.body;
@@ -107,7 +107,7 @@ router.put("/assign-mentor-to-student/:studentId", async (req, res) => {
   }
 });
 
-// Creating a route to get all students assigned to a mentor
+// 5. Creating a route to get all students assigned to a mentor
 router.get("/students-for-mentor/:mentorId", async (req, res) => {
   const { mentorId } = req.params;
 
@@ -124,7 +124,7 @@ router.get("/students-for-mentor/:mentorId", async (req, res) => {
   }
 });
 
-// Creating a route to get the previously assigned mentor for a student
+// 6. Creating a route to get the previously assigned mentor for a student
 router.get("/previous-mentor-for-student/:studentId", async (req, res) => {
   const { studentId } = req.params;
 
